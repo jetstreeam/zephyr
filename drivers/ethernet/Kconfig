@@ -99,3 +99,13 @@ config ETH_INIT_PRIORITY
 	  Do not mess with it unless you know what you are doing.
 	  Note that the priority needs to be lower than the net stack
 	  so that it can start before the networking sub-system.
+
+config ETH_NET_IF_NO_AUTO_START
+	bool "Disbale Ethernet interface auto-start"
+	default n
+	help
+	  This option allows user to set any configuration before the interface
+	  becomes operational. For instance, the EUI-64 value can be configured using
+	  net_if_set_link_addr(iface, mac, 8, NET_LINK_ETHERNET).
+	  When all configurations are done net_if_up() has to be invoked to
+	  bring the interface up.
